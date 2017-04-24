@@ -1,0 +1,4 @@
+group: "atomist-contrib"
+artifact: "TitansRugs"
+version: "0.1.0"
+requires: "[0.25.3,0.26.0)"
