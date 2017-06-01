@@ -1,5 +1,5 @@
 import { CommandHandler, Intent, Parameter, Tags } from "@atomist/rug/operations/Decorators";
-import { HandleCommand, HandlerContext, Plan, ResponseMessage } from "@atomist/rug/operations/Handlers";
+import { HandleCommand, HandlerContext, Plan, CommandPlan, ResponseMessage } from "@atomist/rug/operations/Handlers";
 import { Pattern } from "@atomist/rug/operations/RugOperation";
 
 /**
@@ -23,7 +23,7 @@ export class MyFirstCommandHandler implements HandleCommand {
 
     public handle(command: HandlerContext): Plan {
         const message = new ResponseMessage(`Successfully ran MyFirstCommandHandler: ${this.inputParameter}`);
-        return Plan.ofMessage(message);
+        return CommandPlan.ofMessage(message);
     }
 }
 

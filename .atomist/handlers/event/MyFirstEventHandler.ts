@@ -1,5 +1,5 @@
 import { EventHandler, Tags } from "@atomist/rug/operations/Decorators";
-import { ChannelAddress, DirectedMessage, HandleEvent, Plan } from "@atomist/rug/operations/Handlers";
+import { ChannelAddress, DirectedMessage, HandleEvent, Plan, EventPlan } from "@atomist/rug/operations/Handlers";
 import { Match } from "@atomist/rug/tree/PathExpression";
 
 import { Tag } from "@atomist/cortex/Tag";
@@ -11,9 +11,9 @@ import { Tag } from "@atomist/cortex/Tag";
 @Tags("documentation")
 export class MyFirstEventHandler implements HandleEvent<Tag, Tag> {
     public handle(event: Match<Tag, Tag>): Plan {
-        const root: Tag = event.root();
+        const root: Tag = event.root;
         const message = new DirectedMessage(`${root.nodeName()} event received`, new ChannelAddress("#general"));
-        return Plan.ofMessage(message);
+        return EventPlan.ofMessage(message);
     }
 }
 
